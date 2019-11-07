@@ -1,20 +1,6 @@
-#!/usr/bin/env python3
-"""
-Proyecto Algoritmo de Newton-Raphson.
-
-Cada participante debe completar su módulo y luego solicitar el Pull-Request.
-"""
-
 import math
 
 def derivada(f, h = 0.02):
-    """
-    Retorna la función derivada de f dado un h.
-
-    Parámetros:
-    f: función de variable real f(x).
-    h: tamaño del paso.
-    """
 
     def _(x):
         return (f(x + h) - f(x))/h
@@ -22,22 +8,22 @@ def derivada(f, h = 0.02):
     return _
 
 def newton_raphson(f, x, ER, N):
-    """
-    Implementa el Algoritmo de Newton-Raphson y retorna la aproximación de la
-    raiz.
+    i=0
+    er=100
+    xx=x
+    d=derivada(f)
+    while (i<N) and (er>ER):
+        xxx=xx-(f(xx)/d(xx))
+        er= abs((xxx-xx)/xxx)
+        xx=xxx
+        print ("Iteracion:",i, "Error:", er, "Raiz:", xx)
+        i=i+1
+    return xx
 
-    Parámetros:
-    f: función de variable real f(x).
-    x: aproximación inicial.
-    ER: cota mínima del error relativo.
-    N: número máximo de iteraciones.
-    """
-
-    print("Iteración:", i, "Aproximación:", xi, "Error:", err)
-
-    return xi
 
 
 if __name__ == "__main__":
     # Pruebe aquí su función.
-    pass
+    f=lambda x:math.sin(x)-(math.e**-x)
+    newton_raphson(f,3.5,0.05,100)
+    pass 
